@@ -5,21 +5,34 @@
     <title>Resultados da Pesquisa</title>
 </head>
 <body>
+    <br>  
+    <!--div class="container">
+        <h2>Pesquisar</h2>
+        <form action="/results" method="POST">
 
-    <table class="table table-hover">
+            <input type="text" class="form-control" name="pesquisar"/>
+            <h2>Artista</h2>
+            <input type="text" class="form-control" name="artist"/>
+            <h2>Gênero</h2>
+            <input type="text" class="form-control" name="gender"/-->
+            
+            <!--button class="btn btn-primary">Pesquisar na Playlist</button>
+            <a href="/" class="btn btn-danger">Voltar</a>
+        </form>
+    </div-->
 
-        {% for pesquisa in lista: %}
-        <tr>
-            <td>{{ pesquisa['musica'] }}</td>
-            <td>{{ pesquisa['artista'] }} </td>
-            <td>{{ pesquisa['genero'] }} </td>
-        </tr>
-            {% if pesquisa not in lista:  %}
-            <h2>Ops! Termos de Pesquisa não encontrados, tente de novo</h2>
-        {% endfor %}
+    <div align="center" class="container">
 
-    </table>
-
-    <a href="/" class="btn btn-primary">Selecionar</a>
+        <label for="lista" class="form-label"><h2>Pesquisar na Playlist</h2></label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions">
+            <option value="Música">
+            <option value="Artista">
+            <option value="Gênero">
+            </datalist>      
+        <br> <br>
+        
+    </div>
+              
 </body>
 </html>
