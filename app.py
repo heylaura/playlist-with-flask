@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-URL = "https://5000-harlequin-cobra-5ewkm8jz.ws-us18.gitpod.io/"
+URL = "https://5000-lavender-crocodile-t24jf8jj.ws-us18.gitpod.io/"
 
 
 @app.route('/login')
@@ -21,7 +21,22 @@ lista_musicas = [
 
 @app.route('/')
 def index():
-    return render_template('index.html', lista=lista_musicas)
+   return render_template('index.html', lista=lista_musicas)
+
+
+@app.route('/results', methods=["POST"])
+def results():
+    item = request.form["pesquisar"]
+
+    for item in lista_musicas:
+        if item in lista_musicas:
+            return {"musica": item, "artista": item, "genero": item}
+            
+        else:
+            return render_template('notfound.html')
+    
+    return render_template(URL)
+        
 
 
 
@@ -65,7 +80,11 @@ def remove():
 def pesquisar():
     return render_template('search.html', lista=lista_musicas)
 
- 
+
+
+
+
+
 app.run(debug=True)
 
 # Implementar o DELETE!! (2,0 pontos)
