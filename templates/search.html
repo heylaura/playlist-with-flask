@@ -6,40 +6,37 @@
 </head>
 <body>
     <br>  
-    <!--div class="container">
-        <h2>Pesquisar</h2>
-        <form action="/results" method="POST">
-
-            <input type="text" class="form-control" name="pesquisar"/>
-            <h2>Artista</h2>
-            <input type="text" class="form-control" name="artist"/>
-            <h2>Gênero</h2>
-            <input type="text" class="form-control" name="gender"/-->
-            
-            <!--button class="btn btn-primary">Pesquisar na Playlist</button>
-            <a href="/" class="btn btn-danger">Voltar</a>
-        </form>
-    </div-->
-
+        
     <div align="center" class="container">
-
-        <label for="lista" class="form-label"><h2>Pesquisar na Playlist</h2></label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-            <datalist id="datalistOptions">
-            <option value="Música">
-            <option value="Artista">
-            <option value="Gênero">
-            </datalist>      
+        
+        
+        <h4> Let's see what we've found 🔎</h4>
         <br> <br>
-        <form action="/results" method="POST">
-            <h2>O que está procurando?</h2>
-            <input type="text" class="form-control" name="pesquisar"/>
-            <br>
-            <button class="btn btn-primary">Pesquisar na Playlist</button>
+
+
+        <table class="table table-hover">
+        <thead>
+
+            <tr>
+                <th>      </th>
+                <th>Música</th>
+                <th>Artista</th>
+                <th>Gênero</th>
+            </tr>
             
-            
-            
-    </div>
-              
+        
+
+
+            {% for objeto in lista_busca: %}
+            <tr>
+                <th>      </th>
+                <td>{{ objeto['musica'] }}</td>
+                <td>{{ objeto['artista'] }} </td>
+                <td>{{ objeto['genero'] }} </td>
+            </tr>
+            {% endfor %}
+        </thead>
+        </table>
+    </div>             
 </body>
 </html>

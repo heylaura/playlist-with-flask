@@ -22,21 +22,7 @@ lista_musicas = [
 @app.route('/')
 def index():
    return render_template('index.html', lista=lista_musicas)
-
-
-@app.route('/results', methods=["POST"])
-def results():
-    item = request.form["pesquisar"]
-
-    for item in lista_musicas:
-        if item in lista_musicas:
-            return {"musica": item, "artista": item, "genero": item}
-            
-        else:
-            return render_template('notfound.html')
-    
-    return render_template(URL)
-        
+   
 
 
 
@@ -76,12 +62,38 @@ def remove():
 
 
 
-@app.route('/search')
+
+@app.route('/search', methods=["POST"])
 def pesquisar():
-    return render_template('search.html', lista=lista_musicas)
+
+    lista_busca = []
+    item = request.form["pesquisar"]
+    
+
+    for objeto in lista_musicas:
+        if item in objeto["musica"]:
+           lista_busca.append(objeto)
+                
+        if item in objeto["artista"]:
+            lista_busca.append(objeto)
+            
+        if item in objeto["genero"]:
+            lista_busca.append(objeto)
+
+    else:
+        return render_template('notfound.html')
+
+    return render_template('search.html', lista_busca=lista_busca)
+
+    
+    
 
 
-
+    
+    
+    
+    
+    
 
 
 
