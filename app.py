@@ -24,6 +24,7 @@ lista_musicas = [
     {"musica": "Bohemian Rhapsody", "artista": "Queen", "genero": "Rock"},
     {"musica": "Livin' on a Prayer", "artista": "Bon Jovi", "genero": "Rock"},
     {"musica": "Cheia de manias", "artista": "Raça Negra", "genero": "Samba"},
+    {"musica": "Love in the dark", "artista": "Adele", "genero": "Pop"}
 ]
 
 
