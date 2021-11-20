@@ -68,22 +68,33 @@ def pesquisar():
 
     lista_busca = []
     item = request.form["pesquisar"]
-    
 
     for objeto in lista_musicas:
+
         if item in objeto["musica"]:
-           lista_busca.append(objeto)
+            lista_busca.append(objeto)
                 
         if item in objeto["artista"]:
             lista_busca.append(objeto)
             
         if item in objeto["genero"]:
             lista_busca.append(objeto)
-
-    else:
-        return render_template('notfound.html')
+        
+        #else:
+            #return render_template('notfound.html')
 
     return render_template('search.html', lista_busca=lista_busca)
+    
+
+
+
+
+
+    
+    
+    
+
+    
 
     
     
