@@ -49,8 +49,7 @@
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg></button>
         </div> 
-        </form>
-        
+        </form>        
     </div>
     <br>
     <br>
@@ -60,17 +59,40 @@
         
         <h2 style='color:white'>Sua Playlist</h2><br>
 
-        <table style='color:white' class="table table-hover">
+        
+        <table style='color:white' class="table table-borderless">
+          
+              <thead>
+                <tr>
+                  
+                  <td><b></td></b>
+                  <td><b>MÚSICA</td></b>
+                  <td><b></td></b>
+                  <td><b></td></b>
+                  <td><b>ARTISTA</td></b>
+                  <td><b></td></b>
+                  <td><b></td></b>
+                  <td><b>GÊNERO</td></b>
+                </tr> 
+              </thead>
+        </table>       
+        
+        <div align="left" class="container">
 
-            {% for song in lista: %}
-            <tr>
-                <td>{{ song['musica'] }}</td>
-                <td>{{ song['artista'] }} </td>
-                <td>{{ song['genero'] }} </td>
-            </tr>
-            {% endfor %}
+          <table style='color:white' class="table table-hover">
+                              
+                {% for song in lista: %}
+                <tr>
+                    <td style='color:white'>{{ song['musica'] }}</td>
+                    <td style='color:white'>{{ song['artista'] }} </td>
+                    <td style='color:white'>{{ song['genero'] }} </td>
+                </tr>
+                {% endfor %}
+  
+            </table>
 
-        </table>
+        </div>
+        
         
        
     </div><br>

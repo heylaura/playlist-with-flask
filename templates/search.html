@@ -33,14 +33,15 @@
         
 
 
-            {% for objeto in lista_busca: %}
+            {% for parametro in lista_busca: %}
             <tr>
                 <th>      </th>
-                <td>{{ objeto['musica'] }}</td>
-                <td>{{ objeto['artista'] }} </td>
-                <td>{{ objeto['genero'] }} </td>
+                <td>{{ parametro['musica'] }}</td>
+                <td>{{ parametro['artista'] }} </td>
+                <td>{{ parametro['genero'] }} </td>
             </tr>
             {% endfor %}
+            
         </thead>
         </table>
   

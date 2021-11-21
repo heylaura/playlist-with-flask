@@ -66,9 +66,8 @@ def remove():
     id_gender = request.form['gender']       # <input name="new_gender"/>
     new_del = { "musica": new_music, "artista": new_artist, "genero": id_gender}
     lista_musicas.remove(new_del) #deleta o dicionário que o usuário escolher
-    #tentar implementar a exclusão da lista toda de uma vez       
+          
     return redirect(URL)
-
 
 
 
@@ -78,21 +77,36 @@ def pesquisar():
     lista_busca = []
     item = request.form["pesquisar"]
 
+    
+
     for objeto in lista_musicas:
-                       
+            
         if item.lower() in objeto["musica"].lower():
             lista_busca.append(objeto)
-        
-                
+
         if item.lower() in objeto["artista"].lower():
             lista_busca.append(objeto)
-        
-        
+
         if item.lower() in objeto["genero"].lower():
             lista_busca.append(objeto)
 
-
     return render_template('search.html', lista_busca=lista_busca)
+        
+
+   
+    #return render_template('notfound.html')
+    
+    
+    
+
+
+    
+
+    
+    
+            
+    
+    
 
 
 
