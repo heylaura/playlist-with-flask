@@ -90,14 +90,14 @@ def pesquisar():
         if item.lower() in objeto["genero"].lower():
             lista_busca.append(objeto)
 
-    return render_template('search.html', lista_busca=lista_busca)
-        
+     
     
-    
-   for objeto in lista_musicas:
-        if not in lista_busca:
-         return render_template('notfound.html')
-       
+    for objeto in lista_musicas:
+        if not lista_busca:
+            return render_template('notfound.html')
+
+
+    return render_template('search.html', lista_busca=lista_busca) 
 
   
 
