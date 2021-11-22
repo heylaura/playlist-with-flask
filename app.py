@@ -92,45 +92,14 @@ def pesquisar():
 
     return render_template('search.html', lista_busca=lista_busca)
         
+    
+    
+   for objeto in lista_musicas:
+        if not lista_busca:
+         return render_template('notfound.html')
+       
 
-   
-    #return render_template('notfound.html')
-    
-    
-    
-
-
-    
-
-    
-    
-            
-    
-    
-
-
-
-
-
-    
-    
-    
-
-    
-
-    
-    
-
-
-    
-    
-    
-    
-    
-
-
+  
 
 app.run(debug=True)
 
-# Implementar o DELETE!! (2,0 pontos)
-# Implementar uma pesquisa (3,0 pontos)
