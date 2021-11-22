@@ -95,7 +95,7 @@ def pesquisar():
     
     
    for objeto in lista_musicas:
-        if not lista_busca:
+        if not in lista_busca:
          return render_template('notfound.html')
        
 
