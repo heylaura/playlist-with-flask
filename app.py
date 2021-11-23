@@ -5,11 +5,6 @@ app = Flask(__name__)
 URL = "https://5000-lavender-crocodile-t24jf8jj.ws-us18.gitpod.io/"
 
 
-@app.route('/login')
-def home():
-    return render_template('login.html')
-
-
 lista_musicas = [
     {"musica": "Wish you were here", "artista": "Pink Floyd", "genero": "Rock"},
     {"musica": "Feel Good Inc.", "artista": "Gorillaz", "genero": "Rap"},
@@ -43,12 +38,26 @@ def create():
 
 @app.route('/save', methods=['POST'])  # <form action="/save" method="POST">
 def save():
+    
+    lista_repetidos = []
+    
     new_music = request.form['music']   # <input name="new_music"/>
     new_artist = request.form['artist']       # <input name="new_artist"/>
     id_gender = request.form['gender']       # <input name="new_gender"/>
     new_add = { "musica": new_music, "artista": new_artist, "genero": id_gender}
     lista_musicas.append(new_add)
     
+    
+    for parametro in lista_musicas:
+        if new_music.lower() in parametro["musica"].lower():
+            lista_repetidos.append(parametro)
+
+
+            if len(lista_repetidos) == 1:
+                lista_musicas.remove(new_add)  
+                return render_template('resultsfound.html', lista_repetidos=lista_repetidos)   
+            
+            
     return redirect(URL)
 
 
