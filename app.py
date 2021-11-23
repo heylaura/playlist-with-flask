@@ -92,9 +92,9 @@ def pesquisar():
 
      
     
-    for objeto in lista_musicas:
-        if not lista_busca:
-            return render_template('notfound.html')
+    
+    if len(lista_busca) == 0:
+        return render_template('notfound.html')
 
 
     return render_template('search.html', lista_busca=lista_busca) 
