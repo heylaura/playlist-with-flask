@@ -48,7 +48,7 @@ def save():
        
     
     #redirecionar para a página de erro
-    #if len(new_music) == 0 or new_music >= '' and len(new_artist) == 0 or new_artist >= '' and len(id_gender) == 0 or id_gender >= '' :
+    #if len(new_music) == 0 or new_music >= '':
         #return render_template('notfound.html')
 
 
