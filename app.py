@@ -48,8 +48,8 @@ def save():
        
     
     #redirecionar para a página de erro
-    #if len(new_music) == 0 or new_music >= '':
-        #return render_template('notfound.html')
+    if len(new_music) == 0:
+        return render_template('notfound.html')
 
 
     #evita que o usuário adicione músicas repetidas
