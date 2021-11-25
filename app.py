@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-URL = "https://5000-lavender-crocodile-t24jf8jj.ws-us18.gitpod.io/"
+URL = "http://127.0.0.1:5000/"
 
 
 lista_musicas = [
@@ -29,17 +29,17 @@ def index():
    
 
 
-
+#página que irá receber os valores que o usuário deseja inserir na lista
 @app.route('/create')
 def create():
     return render_template('create.html')
 
 
-
-@app.route('/save', methods=['POST'])  # <form action="/save" method="POST">
+#redireciona os campos preenchidos do formulário
+@app.route('/save', methods=['POST'])  #recebe parâmetros para a inserção de novos valores na lista
 def save():
-    
-    lista_repetidos = []
+    #lista para armazenar eventuais músicas repetidas
+    lista_repetidos = [] 
     
     new_music = request.form['music']   # <input name="new_music"/>
     new_artist = request.form['artist']       # <input name="new_artist"/>
@@ -48,14 +48,24 @@ def save():
     lista_musicas.append(new_add)
     
     
+    #redireciona para a página de erro
+    if len(new_music) == 0 or new_music >= '' and len(new_artist) == 0 or new_artist >= '' and len(id_gender) == 0 or id_gender >= '' :
+        return render_template('notfound.html')
+
+
+    #evita que o usuário adicione músicas repetidas
+    #exceto se os valores contidos nas chaves "artista" e "genero" forem distintas (funcionalidade ainda não implementada)
     for parametro in lista_musicas:
         if new_music.lower() in parametro["musica"].lower():
             lista_repetidos.append(parametro)
 
-
-            if len(lista_repetidos) == 1:
-                lista_musicas.remove(new_add)  
-                return render_template('resultsfound.html', lista_repetidos=lista_repetidos)   
+    #se não houver parâmetro repetido o novo dicionário é adicionado à lista
+    if len(lista_repetidos) == 0:
+        lista_musicas.append(new_add)
+        
+    #se o valor constante na chave música já pertencer à lista não será possível adicioná-lo
+    else:  
+        return render_template('resultsfound.html', lista_repetidos=lista_repetidos) 
             
             
     return redirect(URL)
@@ -87,7 +97,11 @@ def pesquisar():
     item = request.form["pesquisar"]
 
     
-
+    #redireciona para a página de erro se o usuário clica no ícone de pesquisa e não informa valor ou apenas pressiona espaço(s) na barra de pesquisa
+    if len(item) == 0 or item >= '':
+        return render_template('notfound.html')
+           
+    #habilita a pesquisa por chave nos dicionários presentes na lista de músicas
     for objeto in lista_musicas:
             
         if item.lower() in objeto["musica"].lower():
@@ -100,13 +114,12 @@ def pesquisar():
             lista_busca.append(objeto)
 
      
-    
-    
+    #se a lista de busca não contiver elementos o usuário será redirecionado à página de erro
     if len(lista_busca) == 0:
         return render_template('notfound.html')
 
-
-    return render_template('search.html', lista_busca=lista_busca) 
+    #retorna os parâmetros de pesquisa informados com base nos elementos da lista de busca
+    return render_template('search.html', lista_busca=lista_busca)  
 
   
 
