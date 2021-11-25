@@ -45,12 +45,11 @@ def save():
     new_artist = request.form['artist']       # <input name="new_artist"/>
     id_gender = request.form['gender']       # <input name="new_gender"/>
     new_add = { "musica": new_music, "artista": new_artist, "genero": id_gender}
-    lista_musicas.append(new_add)
+       
     
-    
-    #redireciona para a página de erro
-    if len(new_music) == 0 or new_music >= '' and len(new_artist) == 0 or new_artist >= '' and len(id_gender) == 0 or id_gender >= '' :
-        return render_template('notfound.html')
+    #redirecionar para a página de erro
+    #if len(new_music) == 0 or new_music >= '' and len(new_artist) == 0 or new_artist >= '' and len(id_gender) == 0 or id_gender >= '' :
+        #return render_template('notfound.html')
 
 
     #evita que o usuário adicione músicas repetidas
