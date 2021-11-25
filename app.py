@@ -97,7 +97,7 @@ def pesquisar():
 
     
     #redireciona para a página de erro se o usuário clica no ícone de pesquisa e não informa valor ou apenas pressiona espaço(s) na barra de pesquisa
-    if len(item) == 0 or item >= '':
+    if len(item) == 0:
         return render_template('notfound.html')
            
     #habilita a pesquisa por chave nos dicionários presentes na lista de músicas
