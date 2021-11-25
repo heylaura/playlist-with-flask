@@ -96,7 +96,7 @@ def pesquisar():
     item = request.form["pesquisar"]
 
     
-    #redireciona para a página de erro se o usuário clica no ícone de pesquisa e não informa valor ou apenas pressiona espaço(s) na barra de pesquisa
+    #redireciona para a página de erro se o usuário clica no ícone de pesquisa e não informa valor
     if len(item) == 0:
         return render_template('notfound.html')
            
